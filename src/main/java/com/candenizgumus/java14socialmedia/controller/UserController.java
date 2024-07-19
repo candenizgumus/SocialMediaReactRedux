@@ -69,6 +69,7 @@ public class UserController
     }
 
     @PostMapping("/edit-profile")
+    @CrossOrigin("*")
     public ResponseEntity<Boolean> editProfile(@RequestBody User user){
         userService.editProfile(user);
         return ResponseEntity.ok(true);

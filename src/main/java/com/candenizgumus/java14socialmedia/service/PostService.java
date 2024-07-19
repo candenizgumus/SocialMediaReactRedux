@@ -3,15 +3,15 @@ package com.candenizgumus.java14socialmedia.service;
 import com.candenizgumus.java14socialmedia.config.JwtManager;
 import com.candenizgumus.java14socialmedia.dto.request.CreatePostRequestDto;
 import com.candenizgumus.java14socialmedia.dto.response.PostListResponseDto;
-import com.candenizgumus.java14socialmedia.dto.response.ResponseDto;
 import com.candenizgumus.java14socialmedia.entity.Post;
 import com.candenizgumus.java14socialmedia.entity.User;
 import com.candenizgumus.java14socialmedia.exceptions.AuthException;
 import com.candenizgumus.java14socialmedia.exceptions.ErrorType;
+import com.candenizgumus.java14socialmedia.repository.CommentRepository;
 import com.candenizgumus.java14socialmedia.repository.PostRepository;
-import com.candenizgumus.java14socialmedia.views.VwUserAvatar;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -23,6 +23,10 @@ public class PostService
     private final PostRepository postRepository;
     private final JwtManager    jwtManager;
     private final UserService userService;
+    @Lazy
+    @Autowired
+    private CommentService commentService;
+
 
     public void createPost(CreatePostRequestDto dto)
     {
@@ -65,6 +69,7 @@ public class PostService
                     .sharedDate(p.getSharedDate())
                     .userId(p.getUserId())
                     .userName(mapUserList.get(p.getUserId()).getUserName())
+                    .commentList(commentService.getCommentsByPostId(p.getId(), 0, 3))
                     .build());
         });
 

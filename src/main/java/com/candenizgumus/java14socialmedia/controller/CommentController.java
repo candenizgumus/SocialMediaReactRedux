@@ -1,6 +1,7 @@
 package com.candenizgumus.java14socialmedia.controller;
 
 import com.candenizgumus.java14socialmedia.dto.request.CommentSaveRequestDto;
+import com.candenizgumus.java14socialmedia.dto.response.CommentListByPageResponseDto;
 import com.candenizgumus.java14socialmedia.dto.response.CommentResponseDto;
 import com.candenizgumus.java14socialmedia.dto.response.PostListResponseDto;
 import com.candenizgumus.java14socialmedia.dto.response.ResponseDto;
@@ -32,6 +33,17 @@ public class CommentController
 
         return ResponseEntity.ok(ResponseDto.<List<CommentResponseDto>>builder()
                 .data(commentService.getCommentList())
+                .code(200)
+                .message("Comments getirildi.")
+                .build());
+    }
+
+    @PostMapping("/get-comment-list-by-post")
+    @CrossOrigin("*")
+    public ResponseEntity<ResponseDto<List<CommentResponseDto>>> getCommentListByPost( @RequestBody CommentListByPageResponseDto dto)
+    {
+        return ResponseEntity.ok(ResponseDto.<List<CommentResponseDto>>builder()
+                .data(commentService.getCommentListByPost(dto))
                 .code(200)
                 .message("Comments getirildi.")
                 .build());

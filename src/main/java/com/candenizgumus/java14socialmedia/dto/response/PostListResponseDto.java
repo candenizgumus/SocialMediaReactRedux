@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -20,4 +22,5 @@ public class PostListResponseDto
     Long likeCount;
     Long commentCount;
     Long sharedDate;
+    List<CommentResponseDto> commentList;
 }

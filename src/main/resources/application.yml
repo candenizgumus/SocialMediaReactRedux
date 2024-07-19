@@ -1,6 +1,8 @@
 server:
   port: 9090
 spring:
+  main:
+    allow-circular-references: true
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/java14socialmedia

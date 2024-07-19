@@ -19,7 +19,7 @@ public class JwtManager {
      * 29 + 10 + 10 = 50
      * 50^50
      */
-    private final Long exDate = 1000L*60*5;
+    private final Long exDate = 1000L*60*20;
     /**
      * Create Token
      * Access Token
