@@ -5,7 +5,7 @@ This project is a social media application where users can create posts and foll
 
 ## Features
 - User authentication and authorization
-- Create, edit, and delete posts
+- Create, edit, comment and delete posts
 - Follow and unfollow other users
 - View profiles and posts of followed users
 - Like and comment on posts
